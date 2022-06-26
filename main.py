@@ -1,12 +1,18 @@
 import requests
 import urllib.parse
 import os
+from dotenv import load_dotenv
 from pathlib import Path
+
+
+load_dotenv()
+token = os.environ["NASA_TOKEN"]
 
 
 def image_download(url, path, name):
     Path(path).mkdir(parents=True, exist_ok=True)
-    filename = f"{path}{name}"
+    extension = url_to_extension(url)
+    filename = f"{path}{name}{extension}"
 
     response = requests.get(url)
     response.raise_for_status()
@@ -37,5 +43,20 @@ def url_to_extension(url):
     return splitted_extension
 
 
-url = "https://example.com/txt/hello%20world.txt?v=9#python"
-url_to_extension(url)
+def fetch_nasa_apod(count):
+    image_urls = []
+    url = 'https://api.nasa.gov/planetary/apod'
+    payload = {'api_key': f'{token}', 'count': count, 'hd': 'True'}
+    response = requests.get(url, params=payload)
+    response.raise_for_status()
+    answer = response.json()
+    for image in answer:
+        image_urls.append(image.get('hdurl'))
+    for number, link in enumerate(image_urls):
+        print(link)
+        path = './images/'
+        name = f'nasa_apod_{number}'
+        image_download(link, path, name)
+
+
+fetch_nasa_apod(40)
