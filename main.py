@@ -1,4 +1,6 @@
 import requests
+import urllib.parse
+import os
 from pathlib import Path
 
 
@@ -27,4 +29,13 @@ def fetch_spacex_last_launch():
         image_download(link, path, name)
 
 
-fetch_spacex_last_launch()
+def url_to_extension(url):
+    parsed = urllib.parse.urlsplit(url)
+    unquoted = urllib.parse.unquote(parsed.path)
+    file_path, file_name = os.path.split(unquoted)
+    splitted_path, splitted_extension = os.path.splitext(file_name)
+    return splitted_extension
+
+
+url = "https://example.com/txt/hello%20world.txt?v=9#python"
+url_to_extension(url)
