@@ -13,14 +13,18 @@ def image_download(url, path, name):
         file.write(response.content)
 
 
-url = "https://api.spacexdata.com/v3/launches/past"
-payload = {'flight_number': 13}
-response = requests.get(url, params=payload)
-response.raise_for_status()
-answer = response.json()
-links = answer[0]['links']['flickr_images']
+def fetch_spacex_last_launch():
+    url = "https://api.spacexdata.com/v3/launches/past"
+    payload = {'flight_number': 13}
+    response = requests.get(url, params=payload)
+    response.raise_for_status()
+    answer = response.json()
+    links = answer[0]['links']['flickr_images']
 
-for number, link in enumerate(links):
-    path = './images/'
-    name = f'spacex_{number}'
-    image_download(link, path, name)
+    for number, link in enumerate(links):
+        path = './images/'
+        name = f'spacex_{number}'
+        image_download(link, path, name)
+
+
+fetch_spacex_last_launch()
