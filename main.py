@@ -13,6 +13,10 @@ def image_download(url, path):
         file.write(response.content)
 
 
-url = "https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg"
-path = "./images/"
-image_download(url, path)
+url = "https://api.spacexdata.com/v3/launches/past"
+payload = {'flight_number': 13}
+response = requests.get(url, params=payload)
+response.raise_for_status()
+answer = response.json()
+links = answer[0]['links']['flickr_images']
+print(links)
