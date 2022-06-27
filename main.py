@@ -43,7 +43,7 @@ def url_to_extension(url):
     return splitted_extension
 
 
-def fetch_nasa_apod(count):
+def fetch_nasa_apod(count, token):
     image_urls = []
     url = 'https://api.nasa.gov/planetary/apod'
     payload = {'api_key': f'{token}', 'count': count, 'hd': 'True'}
@@ -59,4 +59,10 @@ def fetch_nasa_apod(count):
         image_download(link, path, name)
 
 
-fetch_nasa_apod(40)
+def main():
+    load_dotenv()
+    token = os.environ["NASA_TOKEN"]
+
+
+if __name__ == '__main__':
+    main()
