@@ -1,4 +1,5 @@
 import requests
+from download import image_download
 
 
 def fetch_nasa_epic(token):
@@ -13,7 +14,8 @@ def fetch_nasa_epic(token):
         date = entry.get('date')
         splitted_date, splitted_time = date.split(' ')
         year, month, day = splitted_date.split('-')
-        archive_url = f'https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{name}.png'
+        archive_url = f'https://api.nasa.gov/EPIC/archive/\
+                        natural/{year}/{month}/{day}/png/{name}.png'
         image_urls.append(archive_url)
     for number, link in enumerate(image_urls):
         path = './images/'
