@@ -1,8 +1,8 @@
-import requests
 import os
-from download import image_download
-from dotenv import load_dotenv
 
+import requests
+from dotenv import load_dotenv
+from download import image_download
 
 load_dotenv()
 token = os.environ["NASA_TOKEN"]

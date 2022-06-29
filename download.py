@@ -1,7 +1,8 @@
-import requests
 import os
 import urllib.parse
 from pathlib import Path
+
+import requests
 
 
 def image_download(url, path, name, token=False):
