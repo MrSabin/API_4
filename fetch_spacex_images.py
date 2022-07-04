@@ -13,10 +13,8 @@ else:
 response = requests.get(url)
 response.raise_for_status()
 answer = response.json()
-print(answer)
 links = answer['links']['flickr']['original']
 for number, link in enumerate(links):
-    print(link)
     path = './images/'
     name = f'spacex_{number}'
     image_download(link, path, name)
