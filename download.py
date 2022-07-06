@@ -7,7 +7,7 @@ import requests
 
 def download_image(url, path, name, token=None):
     Path(path).mkdir(parents=True, exist_ok=True)
-    extension = url_to_extension(url)
+    extension = extract_extension(url)
     filename = f"{path}{name}{extension}"
     payload = {'api_key': f'{token}'}
     response = (
@@ -19,7 +19,7 @@ def download_image(url, path, name, token=None):
         file.write(response.content)
 
 
-def url_to_extension(url):
+def extract_extension(url):
     parsed = urllib.parse.urlsplit(url)
     unquoted = urllib.parse.unquote(parsed.path)
     file_path, file_name = os.path.split(unquoted)
