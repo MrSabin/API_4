@@ -3,7 +3,7 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from download import image_download
+from download import download_image
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-count', help='Количество загружаемых фото')
@@ -21,4 +21,4 @@ for image in answer:
 for number, link in enumerate(image_urls):
     path = './images/'
     name = f'nasa_apod_{number}'
-    image_download(link, path, name)
+    download_image(link, path, name)

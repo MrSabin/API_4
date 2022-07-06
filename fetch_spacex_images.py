@@ -1,7 +1,7 @@
 import argparse
 
 import requests
-from download import image_download
+from download import download_image
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--id', help='ID запуска')
@@ -17,4 +17,4 @@ links = answer['links']['flickr']['original']
 for number, link in enumerate(links):
     path = './images/'
     name = f'spacex_{number}'
-    image_download(link, path, name)
+    download_image(link, path, name)

@@ -2,7 +2,7 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from download import image_download
+from download import download_image
 
 load_dotenv()
 token = os.environ["NASA_TOKEN"]
@@ -22,4 +22,4 @@ for entry in answer:
 for number, link in enumerate(image_urls):
     path = './images/'
     name = f'nasa_epic_{number}'
-    image_download(link, path, name, token)
+    download_image(link, path, name, token)

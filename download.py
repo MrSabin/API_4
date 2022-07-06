@@ -5,7 +5,7 @@ from pathlib import Path
 import requests
 
 
-def image_download(url, path, name, token=False):
+def download_image(url, path, name, token=False):
     Path(path).mkdir(parents=True, exist_ok=True)
     extension = url_to_extension(url)
     filename = f"{path}{name}{extension}"
