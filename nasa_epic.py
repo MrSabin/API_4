@@ -10,9 +10,9 @@ api_url = 'https://api.nasa.gov/EPIC/api/natural/images'
 payload = {'api_key': token}
 response = requests.get(api_url, params=payload)
 response.raise_for_status()
-answer = response.json()
+return_object = response.json()
 image_urls = []
-for entry in answer:
+for entry in return_object:
     name = entry.get('image')
     date = entry.get('date')
     splitted_date, splitted_time = date.split(' ')

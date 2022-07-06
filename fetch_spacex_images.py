@@ -12,8 +12,8 @@ else:
     url = "https://api.spacexdata.com/v4/launches/latest"
 response = requests.get(url)
 response.raise_for_status()
-answer = response.json()
-links = answer['links']['flickr']['original']
+return_object = response.json()
+links = return_object['links']['flickr']['original']
 for number, link in enumerate(links):
     path = './images/'
     name = f'spacex_{number}'

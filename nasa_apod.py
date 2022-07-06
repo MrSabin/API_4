@@ -15,8 +15,8 @@ url = 'https://api.nasa.gov/planetary/apod'
 payload = {'api_key': token, 'count': args.count, 'hd': 'True'}
 response = requests.get(url, params=payload)
 response.raise_for_status()
-answer = response.json()
-for image in answer:
+return_object = response.json()
+for image in return_object:
     image_urls.append(image.get('hdurl'))
 for number, link in enumerate(image_urls):
     path = './images/'
