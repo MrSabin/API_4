@@ -4,7 +4,7 @@ import random
 import time
 
 from dotenv import load_dotenv
-from telegram_bot import bot_send_photo
+from telegram_bot import send_photo
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--delay', help='Задержка между отправками в секундах')
@@ -25,7 +25,7 @@ def main():
     while True:
         for image_path in image_paths:
             print("Sending image...")
-            bot_send_photo(image_path)
+            send_photo(image_path)
             print(f"Sended image. Waiting {delay} seconds for next iteration.")
             time.sleep(int(delay))
         random.shuffle(image_paths)
