@@ -12,7 +12,7 @@ load_dotenv()
 token = os.environ["NASA_TOKEN"]
 image_urls = []
 url = 'https://api.nasa.gov/planetary/apod'
-payload = {'api_key': f'{token}', 'count': args.count, 'hd': 'True'}
+payload = {'api_key': token, 'count': args.count, 'hd': 'True'}
 response = requests.get(url, params=payload)
 response.raise_for_status()
 answer = response.json()

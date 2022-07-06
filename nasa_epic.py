@@ -7,7 +7,7 @@ from download import download_image
 load_dotenv()
 token = os.environ["NASA_TOKEN"]
 api_url = 'https://api.nasa.gov/EPIC/api/natural/images'
-payload = {'api_key': f'{token}'}
+payload = {'api_key': token}
 response = requests.get(api_url, params=payload)
 response.raise_for_status()
 answer = response.json()
