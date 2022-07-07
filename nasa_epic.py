@@ -13,8 +13,8 @@ def download_nasa_epic(token):
     return_object = response.json()
     image_urls = []
     for entry in return_object:
-        name = entry.get('image')
-        date = entry.get('date')
+        name = entry['image']
+        date = entry['date']
         splitted_date, splitted_time = date.split(' ')
         year, month, day = splitted_date.split('-')
         archive_url = f'https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{name}.png'
