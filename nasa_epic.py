@@ -17,8 +17,9 @@ def download_nasa_epic(token):
         date = entry['date']
         splitted_date, splitted_time = date.split(' ')
         year, month, day = splitted_date.split('-')
-        archive_url = f'https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{name}.png'
-        image_urls.append(archive_url)
+        archive_url = 'https://api.nasa.gov/EPIC/archive/natural'
+        image_url = f'{archive_url}/{year}/{month}/{day}/png/{name}.png'
+        image_urls.append(image_url)
     for number, link in enumerate(image_urls):
         path = './images/'
         name = f'nasa_epic_{number}'
