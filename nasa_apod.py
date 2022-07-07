@@ -5,20 +5,30 @@ import requests
 from dotenv import load_dotenv
 from download import download_image
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-count', help='Количество загружаемых фото')
-args = parser.parse_args()
-load_dotenv()
-token = os.environ["NASA_TOKEN"]
-image_urls = []
-url = 'https://api.nasa.gov/planetary/apod'
-payload = {'api_key': token, 'count': args.count, 'hd': 'True'}
-response = requests.get(url, params=payload)
-response.raise_for_status()
-return_object = response.json()
-for image in return_object:
-    image_urls.append(image.get('hdurl'))
-for number, link in enumerate(image_urls):
-    path = './images/'
-    name = f'nasa_apod_{number}'
-    download_image(link, path, name)
+
+def download_nasa_apod(count, token):
+    image_urls = []
+    url = 'https://api.nasa.gov/planetary/apod'
+    payload = {'api_key': token, 'count': count, 'hd': 'True'}
+    response = requests.get(url, params=payload)
+    response.raise_for_status()
+    return_object = response.json()
+    for image in return_object:
+        image_urls.append(image.get('hdurl'))
+    for number, link in enumerate(image_urls):
+        path = './images/'
+        name = f'nasa_apod_{number}'
+        download_image(link, path, name)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-count', help='Количество загружаемых фото')
+    args = parser.parse_args()
+    load_dotenv()
+    token = os.environ["NASA_TOKEN"]
+    download_nasa_apod(args.count, token)
+
+
+if __name__ == '__main__':
+    main()
