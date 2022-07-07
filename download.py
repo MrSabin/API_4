@@ -13,7 +13,8 @@ def download_image(url, path, name, token=None):
     response = (
         requests.get(url)
         if token is None
-        else requests.get(url, params=payload))
+        else requests.get(url, params=payload)
+    )
     response.raise_for_status()
     with open(filename, 'wb') as file:
         file.write(response.content)
