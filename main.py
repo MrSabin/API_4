@@ -6,15 +6,16 @@ import time
 from dotenv import load_dotenv
 from telegram_bot import send_photo
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--delay', help='Задержка между отправками в секундах')
-args = parser.parse_args()
-
-load_dotenv()
-delay = args.delay if args.delay else os.environ["DELAY_TIME"]
-
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--delay', help='Задержка между отправками в секундах')
+    args = parser.parse_args()
+
+    load_dotenv()
+    token = os.environ["TELEGRAM_TOKEN"]
+    chat_id = os.environ["CHAT_ID"]
+    delay = args.delay if args.delay else os.environ["DELAY_TIME"]
     print("Scanning folder for images...")
     path = "images/"
     image_paths = []
@@ -25,7 +26,7 @@ def main():
     while True:
         for image_path in image_paths:
             print("Sending image...")
-            send_photo(image_path)
+            send_photo(image_path, token, chat_id)
             print(f"Sended image. Waiting {delay} seconds for next iteration.")
             time.sleep(int(delay))
         random.shuffle(image_paths)
