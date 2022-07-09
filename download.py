@@ -9,7 +9,7 @@ def download_image(url, path, name, token=None):
     Path(path).mkdir(parents=True, exist_ok=True)
     extension = extract_extension(url)
     filename = f"{path}{name}{extension}"
-    payload = {'api_key': f'{token}'}
+    payload = {'api_key': token}
     response = (
         requests.get(url)
         if token is None
