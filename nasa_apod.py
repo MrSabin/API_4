@@ -7,18 +7,16 @@ from download import download_image
 
 
 def download_nasa_apod(count, token):
-    image_urls = []
     url = 'https://api.nasa.gov/planetary/apod'
     payload = {'api_key': token, 'count': count, 'hd': 'True'}
     response = requests.get(url, params=payload)
     response.raise_for_status()
     return_object = response.json()
-    for image in return_object:
-        image_urls.append(image.get('hdurl'))
-    for number, link in enumerate(image_urls):
+    for number, image in enumerate(return_object):
+        image_url = image.get('hdurl')
         path = './images/'
         name = f'nasa_apod_{number}'
-        download_image(link, path, name)
+        download_image(image_url, path, name)
 
 
 def main():
