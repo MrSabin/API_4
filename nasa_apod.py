@@ -11,8 +11,8 @@ def download_nasa_apod(count, token):
     payload = {'api_key': token, 'count': count, 'hd': 'True'}
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    return_object = response.json()
-    for number, image in enumerate(return_object):
+    api_metadata = response.json()
+    for number, image in enumerate(api_metadata):
         image_url = image.get('hdurl')
         path = './images/'
         name = f'nasa_apod_{number}'

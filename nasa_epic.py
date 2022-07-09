@@ -10,8 +10,8 @@ def download_nasa_epic(token):
     payload = {'api_key': token}
     response = requests.get(api_url, params=payload)
     response.raise_for_status()
-    return_object = response.json()
-    for number, entry in enumerate(return_object):
+    api_metadata = response.json()
+    for number, entry in enumerate(api_metadata):
         name = entry['image']
         date = entry['date']
         splitted_date, splitted_time = date.split(' ')
