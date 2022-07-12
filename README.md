@@ -26,7 +26,7 @@ Create .env file in script directory, then put in your tokens and parameters, li
 ```python
 NASA_TOKEN="your_nasa_api_token"
 TELEGRAM_TOKEN="your_telegram_bot_token"
-CHAT_ID="your_chat_id"
+TELEGRAM_CHAT_ID="your_chat_id"
 DELAY_TIME="desired_delay_time"
 ```
 
@@ -58,7 +58,11 @@ python3 nasa_epic.py
 This will download photos from NASA EPIC project. Script will download photos to `images/` subdir in script directory.
 
 4. Sending photos to Telegram:
-After you downloaded all photos, you can start script for automatic posting with Telegram bot. Run script by typing `python3 main.py` Script will post photos from `images/` folder with delay, specified in .env file (DELAY_TIME) or by running script with `--delay` argument, like
+After you downloaded all photos, you can start script for automatic posting with Telegram bot. Run script by typing
+```python
+python3 main.py
+```
+Script will post photos from `images/` folder with delay, specified in .env file (DELAY_TIME) or by running script with `--delay` argument, like
 ```python
 python3 main.py --delay "delay_in_seconds"
 ```
