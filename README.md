@@ -1,8 +1,8 @@
 # Space Telegram
 This project contains scripts for:
 - Download SpaceX photos of last launch/launch by ID (fetch_spacex_images.py)
-- Download specified amount of photos from NASA APOD service (nasa_apod.py)
-- Download Earth photos from NASA EPIC service (nasa_epic.py)
+- Download specified amount of photos from NASA APOD service (fetch_nasa_apod.py)
+- Download Earth photos from NASA EPIC service (fetch_nasa_epic.py)
 - Send downloaded photos to Telegram chat with specified delay (main.py)
 
 ## How to install
@@ -46,14 +46,14 @@ Script will download photos to `images/` subdir in script directory.
 2. Download NASA APOD photos:
 Run script by typing
 ```python
-python3 nasa_apod.py -count 'how_many_photos'
+python3 fetch_nasa_apod.py -count 'how_many_photos'
 ```
 This will download specified amount of photos from NASA Picture of a Day project. Script will download photos to `images/` subdir in script directory.
 
 3. Download NASA EPIC photos:
 Run script by typing
 ```python
-python3 nasa_epic.py
+python3 fetch_nasa_epic.py
 ```
 This will download photos from NASA EPIC project. Script will download photos to `images/` subdir in script directory.
 
