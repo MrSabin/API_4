@@ -5,16 +5,11 @@ from pathlib import Path
 import requests
 
 
-def download_image(url, path, name, token=None):
+def download_image(url, path, name, payload=None):
     Path(path).mkdir(parents=True, exist_ok=True)
     extension = extract_extension(url)
     filename = f"{path}{name}{extension}"
-    payload = {'api_key': token}
-    response = (
-        requests.get(url)
-        if token is None
-        else requests.get(url, params=payload)
-    )
+    response = requests.get(url, params=payload)
     response.raise_for_status()
     with open(filename, 'wb') as file:
         file.write(response.content)

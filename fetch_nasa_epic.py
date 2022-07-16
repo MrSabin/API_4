@@ -20,7 +20,7 @@ def download_nasa_epic(token):
         image_url = f'{archive_url}/{year}/{month}/{day}/png/{name}.png'
         path = './images/'
         name = f'nasa_epic_{number}'
-        download_image(image_url, path, name, token)
+        download_image(image_url, path, name, payload)
 
 
 def main():
