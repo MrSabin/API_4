@@ -46,7 +46,7 @@ Script will download photos to `images/` subdir in script directory.
 2. Download NASA APOD photos:
 Run script by typing
 ```python
-python3 fetch_nasa_apod.py -count 'how_many_photos'
+python3 fetch_nasa_apod.py --count 'how_many_photos'
 ```
 This will download specified amount of photos from NASA Picture of a Day project. Script will download photos to `images/` subdir in script directory.
 

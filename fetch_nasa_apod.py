@@ -24,7 +24,7 @@ def download_nasa_apod(count, token):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-count', help='Количество загружаемых фото')
+    parser.add_argument('--count', help='Количество загружаемых фото')
     args = parser.parse_args()
     load_dotenv()
     token = os.environ["NASA_TOKEN"]
