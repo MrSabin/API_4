@@ -18,6 +18,4 @@ def download_image(url, path, name, payload=None):
 def extract_extension(url):
     parsed = urllib.parse.urlsplit(url)
     unquoted = urllib.parse.unquote(parsed.path)
-    file_path, file_name = os.path.split(unquoted)
-    splitted_path, splitted_extension = os.path.splitext(file_name)
-    return splitted_extension
+    return os.path.splitext(unquoted)[-1]
