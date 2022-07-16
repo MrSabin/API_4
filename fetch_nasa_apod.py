@@ -14,6 +14,9 @@ def download_nasa_apod(count, token):
     api_metadata = response.json()
     for number, image in enumerate(api_metadata):
         image_url = image.get('hdurl')
+        if image_url is None:
+            print('Missing link in query. Skipping to next')
+            continue
         path = './images/'
         name = f'nasa_apod_{number}'
         download_image(image_url, path, name)
