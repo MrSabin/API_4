@@ -17,12 +17,9 @@ def download_spacex_photo(url):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--id', help='ID запуска')
+    parser.add_argument('--id', help='ID запуска', default='latest')
     args = parser.parse_args()
-    if args.id:
-        url = f"https://api.spacexdata.com/v4/launches/{args.id}"
-    else:
-        url = "https://api.spacexdata.com/v4/launches/latest"
+    url = f"https://api.spacexdata.com/v4/launches/{args.id}"
     download_spacex_photo(url)
 
 
