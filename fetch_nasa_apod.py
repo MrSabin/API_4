@@ -1,5 +1,6 @@
 import argparse
 import os
+from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
@@ -17,7 +18,7 @@ def download_nasa_apod(count, token):
         if image_url is None:
             print('Missing link in query. Skipping to next')
             continue
-        path = './images/'
+        path = Path.cwd() / 'images'
         name = f'nasa_apod_{number}'
         download_image(image_url, path, name)
 

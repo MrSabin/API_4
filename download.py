@@ -8,7 +8,7 @@ import requests
 def download_image(url, path, name, payload=None):
     Path(path).mkdir(parents=True, exist_ok=True)
     extension = extract_extension(url)
-    filename = f"{path}{name}{extension}"
+    filename = Path(path, f"{name}{extension}")
     response = requests.get(url, params=payload)
     response.raise_for_status()
     with open(filename, 'wb') as file:

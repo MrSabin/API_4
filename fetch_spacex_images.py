@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 
 import requests
 from download import download_image
@@ -10,7 +11,7 @@ def download_spacex_photo(url):
     api_metadata = response.json()
     links = api_metadata['links']['flickr']['original']
     for number, link in enumerate(links):
-        path = './images/'
+        path = Path.cwd() / 'images'
         name = f'spacex_{number}'
         download_image(link, path, name)
 
