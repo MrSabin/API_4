@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 import requests
 from dotenv import load_dotenv
@@ -13,11 +14,11 @@ def download_nasa_epic(token):
     api_metadata = response.json()
     for number, entry in enumerate(api_metadata):
         name = entry['image']
-        date = entry['date']
-        splitted_date, splitted_time = date.split(' ')
-        year, month, day = splitted_date.split('-')
+        taken_at = datetime.strptime(entry['date'], "%Y-%m-%d %H:%M:%S")
+        image_date = datetime.strftime(taken_at, "%Y/%m/%d")
         archive_url = 'https://api.nasa.gov/EPIC/archive/natural'
-        image_url = f'{archive_url}/{year}/{month}/{day}/png/{name}.png'
+        image_url = f'{archive_url}/{image_date}/png/{name}.png'
+        print(image_url)
         path = './images/'
         name = f'nasa_epic_{number}'
         download_image(image_url, path, name, payload)
