@@ -9,13 +9,18 @@ from telegram_bot import send_photo
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--delay', help='Задержка между отправками в секундах')
+    parser.add_argument(
+        '--delay',
+        default=14400,
+        help='Задержка между отправками в секундах'
+    )
     args = parser.parse_args()
 
     load_dotenv()
     token = os.environ["TELEGRAM_TOKEN"]
     chat_id = os.environ["TELEGRAM_CHAT_ID"]
-    delay = args.delay if args.delay else os.environ["DELAY_TIME"]
+    env_delay = os.getenv("DELAY_TIME")
+    delay = args.delay if env_delay is None else env_delay
     print("Scanning folder for images...")
     path = "images/"
     image_paths = []
