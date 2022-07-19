@@ -20,7 +20,7 @@ def main():
     load_dotenv()
     token = os.environ["TELEGRAM_TOKEN"]
     chat_id = os.environ["TELEGRAM_CHAT_ID"]
-    env_delay = os.getenv("DELAY_TIME")
+    env_delay = os.getenv("DELAY_SECONDS")
     delay = args.delay if env_delay is None else env_delay
     print("Scanning folder for images...")
     path = Path.cwd() / 'images'
