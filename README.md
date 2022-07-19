@@ -48,21 +48,21 @@ Run script by typing
 ```python
 python3 fetch_nasa_apod.py --count 'how_many_photos'
 ```
-This will download specified amount of photos from NASA Picture of a Day project. Script will download photos to `images/` subdir in script directory.
+This will download specified amount of photos from NASA Picture of a Day project. If `--count` argument not specified, script will use default value - 10. Script will download photos to `images` subdir in script directory.
 
 3. Download NASA EPIC photos:
 Run script by typing
 ```python
 python3 fetch_nasa_epic.py
 ```
-This will download photos from NASA EPIC project. Script will download photos to `images/` subdir in script directory.
+This will download photos from NASA EPIC project. Script will download photos to `images` subdir in script directory.
 
 4. Sending photos to Telegram:
 After you downloaded all photos, you can start script for automatic posting with Telegram bot. Run script by typing
 ```python
 python3 main.py
 ```
-Script will post photos from `images/` folder with delay, specified in .env file (DELAY_TIME) or by running script with `--delay` argument, like
+Script will post photos from `images` folder with delay, specified in .env file (DELAY_TIME) or by running script with `--delay` argument, like
 ```python
 python3 main.py --delay "delay_in_seconds"
 ```
