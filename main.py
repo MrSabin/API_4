@@ -2,6 +2,7 @@ import argparse
 import os
 import random
 import time
+from pathlib import Path
 
 from dotenv import load_dotenv
 from telegram_bot import send_photo
@@ -22,7 +23,7 @@ def main():
     env_delay = os.getenv("DELAY_TIME")
     delay = args.delay if env_delay is None else env_delay
     print("Scanning folder for images...")
-    path = "images/"
+    path = Path.cwd() / 'images'
     image_paths = []
     files = os.listdir(path)
     for file in files:
