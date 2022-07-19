@@ -27,7 +27,7 @@ Create .env file in script directory, then put in your tokens and parameters, li
 NASA_TOKEN="your_nasa_api_token"
 TELEGRAM_TOKEN="your_telegram_bot_token"
 TELEGRAM_CHAT_ID="your_chat_id"
-DELAY_TIME="desired_delay_time" (Optional)
+DELAY_TIME="delay_time_in_seconds" (Optional)
 ```
 
 ## Using scripts
