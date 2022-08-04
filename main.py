@@ -31,7 +31,7 @@ def main():
         for image_path in image_paths:
             print("Sending image...")
             send_photo(image_path, token, chat_id)
-            print(f"Sended image. Waiting {delay} seconds for next iteration.")
+            print(f"Sent image. Waiting {delay} seconds for next iteration.")
             time.sleep(int(delay))
         random.shuffle(image_paths)
 
